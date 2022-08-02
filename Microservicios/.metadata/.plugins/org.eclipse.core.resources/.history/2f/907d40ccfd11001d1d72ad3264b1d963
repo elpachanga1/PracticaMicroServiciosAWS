@@ -1,0 +1,5 @@
+package com.pachanga.movements.service;
+
+public class MovementService {
+
+}

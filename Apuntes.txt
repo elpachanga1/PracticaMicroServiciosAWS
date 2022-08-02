@@ -1,0 +1,27 @@
+// comandos para correr archivo docker .yml (con powersheell)
+docker-compose -f compose-database.yml up -d
+docker-compose -f compose-service.yml up -d
+
+// estado de dockers
+docker ps
+
+// entrar al contenedor (como cuando estas en el explocador de archivos y usas \\wsl)
+docker exec -it service-broker sh
+
+// ruta kafka (vamos a crear una cola) (se van a hacer un manejo manual)
+cd opt/kafka_2.13_2.6.0/bin
+
+// para crear un topic (cola) (el nombre de topic se llama test-transaction)
+./kafka-topics.sh --create --topic test-transaction -zookeeper localhost:2181 --replication-factor 1 --partitions 3
+
+// para crear producer (escritura (1)) (se envia el mensaje)
+./kafka-console-producer.sh --broker-list localhost:9092 --topic test-transaction 
+// para crear consumer (lectura (2)) (se lee el mensaje)
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-transaction --group movements
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-transaction --group acounts
+
+// quarkus es un framework para creacion de proyectos java para que trabaje con kubernetes
+// crea proyectos muy similar a start.spring.io
+https://quarkus.io/
+
+mvn quarkus:dev

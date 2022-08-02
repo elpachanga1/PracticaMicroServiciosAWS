@@ -1,0 +1,5 @@
+package com.pachanga.appaccount.model;
+
+public class CustomerModel {
+
+}

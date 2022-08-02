@@ -1,0 +1,5 @@
+package com.pachanga.movements.message;
+
+public class TransactionConsumerManual {
+
+}

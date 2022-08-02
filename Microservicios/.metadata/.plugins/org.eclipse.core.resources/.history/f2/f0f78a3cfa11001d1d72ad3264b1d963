@@ -1,0 +1,5 @@
+package com.pachanga.appdeposit.repository;
+
+public interface IMovementRepository {
+
+}

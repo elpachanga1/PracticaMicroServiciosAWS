@@ -1,0 +1,10 @@
+quarkus.http.port=8084
+#mongo db 
+quarkus.mongodb.connection-string=mongodb://aforo255:Aforo255#2019@localhost:27018?authSource=admin
+quarkus.mongodb.database=db_movement
+ 
+kafka.bootstrap.servers=localhost:9092
+mp.messaging.incoming.transactions.connector=smallrye-kafka
+mp.messaging.incoming.transactions.value.deserializer=com.aforo255.conf.TransactionDeserializer
+mp.messaging.incoming.transactions.group.id= historical
+quarkus.http.cors=true
