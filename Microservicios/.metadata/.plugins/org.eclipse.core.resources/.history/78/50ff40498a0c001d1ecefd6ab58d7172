@@ -1,5 +1,0 @@
-package com.pachanga.conf;
-
-public class TransactionDeserializer {
-
-}

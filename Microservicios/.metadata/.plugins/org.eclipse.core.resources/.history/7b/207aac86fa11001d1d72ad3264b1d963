@@ -1,5 +1,0 @@
-package com.pachanga.movements.service;
-
-public interface IMovementService {
-
-}

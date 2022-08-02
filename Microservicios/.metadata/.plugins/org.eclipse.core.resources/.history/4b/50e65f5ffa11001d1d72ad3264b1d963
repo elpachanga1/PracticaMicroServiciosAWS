@@ -1,5 +1,0 @@
-package com.pachanga.movements.repository;
-
-public interface IMovementRepository {
-
-}

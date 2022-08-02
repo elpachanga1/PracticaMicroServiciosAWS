@@ -1,5 +1,0 @@
-package com.pachanga.appaccount.dto;
-
-public class TransactionRequest {
-
-}
