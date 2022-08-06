@@ -1,0 +1,22 @@
+version: '2.1'
+ 
+services:
+  broker-metrics:
+    image: obsidiandynamics/kafdrop
+    container_name: kafdrop
+    restart: always
+    ports:
+      - "9000:9000"
+    environment:
+    - KAFKA_BROKERCONNECT=host:port,host:port
+    - JVM_OPTS="-Xms32M -Xmx64M"
+    - SERVER_SERVLET_CONTEXTPATH="/"
+    - KAFKA_PROPERTIES=$(cat kafka.properties | base64)
+    - KAFKA_TRUSTSTORE=$(cat kafka.truststore.jks | base64)   # optional
+    - KAFKA_KEYSTORE=$(cat kafka.keystore.jks | base64)     # optional
+    networks:
+    - aforo255
+ 
+networks:
+  aforo255:
+    name: micro-java-1
