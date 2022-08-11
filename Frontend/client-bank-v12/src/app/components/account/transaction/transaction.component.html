@@ -1,0 +1,29 @@
+<div class="item__list">
+  <div class="item__products">
+    <div class="products__title">
+      <h3>Transaccion</h3><span>Estas realizando un {{ transaction.type }}</span>
+    </div>
+    <div class="products__form">
+      <form #accountForm="ngForm" (ngSubmit)="ngSubmit()">
+        <div>
+          <label>Tipo de operacion</label>
+          <input type="text" name="type" #type="ngModel" [(ngModel)]="transaction.type" readonly />
+        </div>
+        <div>
+          <label>Monto</label>
+          <input type="text" name="amount" #amount="ngModel" [(ngModel)]="transaction.amount" min="1" required />
+        </div>
+        <div>
+          <small *ngIf="!amount.valid && amount.touched">
+            El monto ingresado es incorrecto
+          </small>
+        </div>
+        <div>
+          <button type="submit" [disabled]="accountForm.invalid">
+            Realizar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

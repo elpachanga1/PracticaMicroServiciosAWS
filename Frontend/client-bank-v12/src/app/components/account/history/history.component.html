@@ -1,0 +1,27 @@
+<div class="item__list">
+  <div class="item__credit">
+    <div class="credit__title">
+      <h3>Movimientos</h3><span>Listado de movimientos</span>
+    </div>
+    <div class="credit__table">
+      <table>
+        <tr>
+          <th>ID Transaccion</th>
+          <th>Total</th>
+          <th>Tipo</th>
+          <th>Fecha</th>
+          <th>ID Cuenta</th>
+        </tr>
+        <tr *ngFor="let p of transactions">
+          <td>{{ p.idTransaction  }}</td>
+          <td>{{ p.amount  }}</td>
+          <td>{{ p.type  }}</td>
+          <td>{{ p.creationDate  }}</td>
+          <td>{{ p.accountId  }}</td>
+
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>

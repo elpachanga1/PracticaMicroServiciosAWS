@@ -1,0 +1,28 @@
+<div class="item__list">
+  <div class="item__credit">
+    <div class="credit__title">
+      <h3>Cuentas</h3><span>Listado de cuentas</span>
+    </div>
+    <div class="credit__table">
+      <table>
+        <tr>
+          <th>ID Cuenta</th>
+          <th>Total</th>
+          <th>Cliente</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let p of accounts">
+          <td>{{ p.idAccount }}</td>
+          <td>{{ p.totalAmount }}</td>
+          <td>{{ p.customer?.fullName }}</td>
+          <td><a class="ligth" (click)="redirectTransaction(p.idAccount!, 'Deposit')">Deposito</a></td>
+          <td><a class="ligth" (click)="redirectTransaction(p.idAccount!, 'Withdrawal')">Retiro</a></td>
+          <td><a class="full" (click)="redirectHistory(p.idAccount!)">Ver Movimientos</a></td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+</div>

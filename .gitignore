@@ -1,2 +1,4 @@
 Microservicios/.metadata/
 *.snap
+Frontend\client-bank-v12/node_modules
+Frontend\client-bank-v12/dist

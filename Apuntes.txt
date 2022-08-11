@@ -25,3 +25,13 @@ cd opt/kafka_2.13_2.6.0/bin
 https://quarkus.io/
 
 mvn quarkus:dev
+
+// se creo un proyecto gateway como puerta y manejador de conexiones, osea todos llegan a ese gateway y el gateway manda 
+// el mensaje al microservicio deseado
+
+// comando para limpiar proyecto maven en spring boot
+mvn clean package -DskipTests
+
+// se posee un frontend para interactuar con la aplicacion
+en 
+npm i
