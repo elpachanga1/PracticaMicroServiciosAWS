@@ -33,5 +33,12 @@ mvn quarkus:dev
 mvn clean package -DskipTests
 
 // se posee un frontend para interactuar con la aplicacion
-en 
+Frontend/client-bank
 npm i
+npm run build
+npm run start
+
+docker run -d -p 9001:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/portainer:/data portainer/portainer
+
+// con prometeus se puede realizar metricas
+http://localhost:9090

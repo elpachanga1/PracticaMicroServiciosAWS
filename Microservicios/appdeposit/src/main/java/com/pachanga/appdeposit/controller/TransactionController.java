@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
  
 import com.pachanga.appdeposit.dto.TransactionRequest;
+import com.pachanga.appdeposit.metric.IncreaseCounterDeposit;
 import com.pachanga.appdeposit.message.TransactionMessagePublish;
 import com.pachanga.appdeposit.model.TransactionModel;
 import com.pachanga.appdeposit.service.ITransactionService;
@@ -23,11 +24,14 @@ public class TransactionController {
     ITransactionService transactionService;
     @Autowired
 	TransactionMessagePublish messageEvent;
+    @Autowired
+    IncreaseCounterDeposit increaseCounterDeposit;
 	
     Logger logger = LoggerFactory.getLogger(TransactionController.class);
     
     @PostMapping("/deposit")
     public ResponseEntity<?> deposit(@RequestBody TransactionRequest request) throws Exception {
+    	increaseCounterDeposit.increaseCounter();
     	Integer accountId = request.getAccountId();
     	Double amount = request.getAmount();
     	

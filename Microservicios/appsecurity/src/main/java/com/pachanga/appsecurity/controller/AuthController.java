@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pachanga.appsecurity.cross.JwtTokenCross;
 import com.pachanga.appsecurity.dto.AuthRequest;
 import com.pachanga.appsecurity.dto.AuthResponse;
+import com.pachanga.appsecurity.metric.IncreaseCounterSecurity;
 import com.pachanga.appsecurity.model.AccessModel;
 import com.pachanga.appsecurity.services.AuthService;
 
@@ -28,6 +29,9 @@ public class AuthController {
 	@Autowired
 	private JwtTokenCross tokenCross;
 	
+	@Autowired
+	private IncreaseCounterSecurity increaseCounterSecurity; 
+	
 	Logger logger = LoggerFactory.getLogger(AuthController.class);
 	
 	@GetMapping
@@ -37,6 +41,7 @@ public class AuthController {
 	
 	@PostMapping("/authentication")
 	public ResponseEntity<?> post(@RequestBody AuthRequest request) throws Exception {
+		increaseCounterSecurity.increaseCounter();
 		String username = request.getUserName();
 		String password = request.getPassword();
 		if ((null != username && !username.isEmpty()) && (null != password && !password.isEmpty())) {

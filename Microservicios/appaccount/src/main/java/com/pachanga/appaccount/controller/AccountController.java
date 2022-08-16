@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pachanga.appaccount.dto.TransactionRequest;
 import com.pachanga.appaccount.message.TransactionConsumerListenerManual;
+import com.pachanga.appaccount.metric.IncreaseCounterAccount;
 import com.pachanga.appaccount.model.AccountModel;
 import com.pachanga.appaccount.service.IAccountService;
 
@@ -25,11 +26,14 @@ public class AccountController {
     IAccountService accountService;
     @Autowired
     TransactionConsumerListenerManual consumerListener;
+    @Autowired
+    IncreaseCounterAccount increaseCounterAccount;
 	
     Logger logger = LoggerFactory.getLogger(AccountController.class);
     
     @GetMapping("/account")
     public ResponseEntity<?> findAllAccounts() throws Exception {
+    	increaseCounterAccount.increaseCounter();
     	List<AccountModel> accounts = accountService.findAll();
     	if (accounts == null || accounts.isEmpty()) return ResponseEntity.notFound().build();
     	return ResponseEntity.ok(accounts);

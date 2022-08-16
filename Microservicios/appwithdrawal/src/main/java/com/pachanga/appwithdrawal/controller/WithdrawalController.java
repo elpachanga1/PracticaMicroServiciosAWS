@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pachanga.appwithdrawal.service.IWithdrawalService;
 import com.pachanga.appwithdrawal.dto.WithdrawalRequest;
 import com.pachanga.appwithdrawal.message.TransactionMessagePublish;
+import com.pachanga.appwithdrawal.metric.IncreaseCounterWithdrawal;
 import com.pachanga.appwithdrawal.model.WithdrawalModel;
  
 @RestController
@@ -23,11 +24,14 @@ public class WithdrawalController {
     IWithdrawalService withdrawalService;
     @Autowired
 	TransactionMessagePublish messageEvent;
+    @Autowired
+    IncreaseCounterWithdrawal increaseCounterWithdrawal;
 	
     Logger logger = LoggerFactory.getLogger(WithdrawalController.class);
     
     @PostMapping("/withdrawal")
     public ResponseEntity<?> deposit(@RequestBody WithdrawalRequest request) throws Exception {
+    	increaseCounterWithdrawal.increaseCounter();
     	Integer accountId = request.getAccountId();
     	Double amount = request.getAmount();
     	

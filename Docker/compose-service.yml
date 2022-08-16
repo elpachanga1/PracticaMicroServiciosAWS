@@ -29,8 +29,8 @@ services:
     - 9090:9090
     networks:
     - aforo255
-    #volumes:
-    #- C:/docker/java/prometheus.yml:/etc/prometheus/prometheus.yml
+    volumes:
+    - C:/docker/java/prometheus.yml:/etc/prometheus/prometheus.yml
   analytics:
     image: grafana/grafana:8.2.3
     container_name: service-analytics
